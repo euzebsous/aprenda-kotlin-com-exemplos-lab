@@ -7,10 +7,12 @@ data class ConteudoEducacional(val nome : String, val nivel:Nivel, val duracao :
 data class Formacao(val nome:String, val conteudos: List<ConteudoEducacional>){ 
 val inscritos = mutableListOf<Usuario>()
 //funcao para matricular usuarios
-fun matricular(usuario: Usuario){
-    inscritos.add(usuario)
-    println("usuario ${usuario.nome} inscrito com sucesso..")
+fun matricular(vararg usuario: Usuario){
+    usuario.forEach{
+    inscritos.add(it)
+    println("usuario ${it.nome} inscrito com sucesso..")
     println()
+    }
 }//fim de matricular()
 //funcão para mostrar na tela informacões sobre a formacao
 fun exibeInfo():Unit{
